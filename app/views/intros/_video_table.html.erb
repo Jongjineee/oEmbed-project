@@ -1,0 +1,138 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">title</th>
+      <td><%= @results["title"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">type</th>
+      <td><%= @results["type"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">version</th>
+      <td>
+        <%= @results["version"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">provider_name</th>
+      <td>
+        <%= @results["provider_name"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">provider_url</th>
+      <td>
+        <%= link_to @results["provider_url"] do %>
+          <%= @results["provider_url"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">author_name</th>
+      <td>
+        <%= @results["author_name"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">author_url</th>
+      <td>
+        <%= link_to @results["author_url"] do %>
+          <%= @results["author_url"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">is_plus</th>
+      <td>
+        <%= @results["is_plus"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">html (640/480)</th>
+      <td>
+        <%= @results["html"] %>
+        <%= @results["html"].html_safe %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">width</th>
+      <td>
+        <%= @results["width"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">height</th>
+      <td>
+        <%= @results["height"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">duration</th>
+      <td>
+        <%= @results["duration"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">description</th>
+      <td>
+        <%= @results["description"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">thumbnail_url (640x480)</th>
+      <td>
+        <%= link_to @results["thumbnail_url"] do %>
+          <%= @results["thumbnail_url"] %>
+        <% end %>
+        <div>
+          <img src="<%= @results["thumbnail_url"] %>" alt="thumbnail_url">
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">thumbnail_width</th>
+      <td>
+        <%= @results["thumbnail_width"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">thumbnail_height</th>
+      <td>
+        <%= @results["thumbnail_height"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">thumbnail_url_with_play_button</th>
+      <td>
+        <%= link_to @results["thumbnail_url_with_play_button"] do %>
+          <%= @results["thumbnail_url_with_play_button"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">upload_date</th>
+      <td>
+        <%= @results["upload_date"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">video_id</th>
+      <td>
+        <%= @results["video_id"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">video_id</th>
+      <td>
+        <%= @results["video_id"] %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">uri</th>
+      <td>
+        <%= @results["uri"] %>
+      </td>
+    </tr>
+  </tbody>
+</table>

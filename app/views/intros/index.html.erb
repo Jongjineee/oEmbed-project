@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="header">
+    <h1 class="header-title">
+      oEmbed Test
+    </h1>
+
+    <form action="/" method="GET">
+      <div class="input-group search-input">
+        <input class="form-control form-control-lg" type="text" name="video_address">
+        <button class="btn btn-warning search-button" type="submit">
+            확인
+        </button>
+      </div>  
+    </form>
+  </div>
+
+  <div class="content-body">
+    <div class="content-table">
+      <% if @results %>
+        <% if @results["type"] == "video" %>
+          <%= render 'video_table' %>
+        <% else %>
+          <%= render 'link_table' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

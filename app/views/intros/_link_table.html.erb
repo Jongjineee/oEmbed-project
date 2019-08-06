@@ -1,0 +1,63 @@
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <th scope="row">type</th>
+      <td><%= @results["type"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">url</th>
+      <td>
+        <%= link_to @results["url"] do %>
+          <%= @results["url"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">author_name</th>
+      <td><%= @results["author_name"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">author_url</th>
+      <td>
+        <%= link_to @results["author_url"] do %>
+          <%= @results["author_url"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">html</th>
+      <td>
+        <%= @results["html"] %>
+        <%= @results["html"].html_safe %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">width</th>
+      <td><%= @results["width"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">height</th>
+      <td><%= @results["height"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">cache_age</th>
+      <td><%= @results["cache_age"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">provider_name</th>
+      <td><%= @results["provider_name"] %></td>
+    </tr>
+    <tr>
+      <th scope="row">provider_url</th>
+      <td>
+        <%= link_to @results["provider_url"] do %>
+          <%= @results["provider_url"] %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">version</th>
+      <td><%= @results["version"] %></td>
+    </tr>
+  </tbody>
+</table>
