@@ -25,5 +25,7 @@ $ bin/rails s
 URL을 입력받고 oEmbed 데이터를 수집하여 보여주는 서비스입니다.
 URL을 입력받는 폼에 URL을 입력하고 확인 버튼을 누르면 해당 URL에 대한 oembed 정보를 출력하고 html값과 thumbnail_url은 미리보기로 보여줍니다.
 
+![preview](https://github.com/Jongjineee/oEmbed-project/blob/master/app/assets/images/preview.png)
+
 ### 참고 사이트
 http://oembed.com/
