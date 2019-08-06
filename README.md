@@ -10,7 +10,7 @@ $ git clone https://github.com/Jongjineee/oEmbed-project
 
 ### Gem 설치
 ```bash
-$ cd itdaa
+$ cd oEmbed-project
 $ bundle install
 ```
 
