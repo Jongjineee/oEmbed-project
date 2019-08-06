@@ -2,10 +2,7 @@ class IntrosController < ApplicationController
   require 'rest-client'
   require 'uri'
   require 'net/http'
-  require 'pry'
-
-  before_action :url_params, only: [:index]
-
+  
   def index
     if url_params && URI.parse(url_params).host
       oembed_providers = RestClient.get 'https://oembed.com/providers.json'
