@@ -28,7 +28,7 @@
       <th scope="row">html</th>
       <td>
         <%= @results["html"] %>
-        <%= @results["html"].html_safe %>
+        <%= @results["html"]&.html_safe %>
       </td>
     </tr>
     <tr>
