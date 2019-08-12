@@ -6,6 +6,12 @@ class IntrosController < ApplicationController
   before_action :check_params
   
   def index
+    # FecthOembedService.call(params[:requested...])
+    # libray 이용, controller 사용 용도?
+
+    # json schemes -> instagram : www. 붙으면 X
+    # application/json-oembed HEADER
+
     if url_params && check_url
       first_url = check_url["endpoints"][0]["url"]
       first_url.gsub! '{format}', 'json'
@@ -19,14 +25,14 @@ class IntrosController < ApplicationController
   private
 
   def url_params
-    params[:video_address]
+    params[:url_address] # video_address 네이밍 변경 url_address
   end
 
   def url_host
     URI.parse(url_params).host
   end
 
-  def check_params
+  def check_params # validated_request_url 따라가도록 하지말고 한 곳에서 입력해주도록? 
     check_valid_url if url_params
   end
 
