@@ -1,23 +1,15 @@
 class IntrosController < ApplicationController
   require 'rest-client'
-  require 'uri'
-  require 'net/http'
-
-  before_action :check_params
+  require 'open-uri'
+  before_action :validated_request_url
   
   def index
-    # FecthOembedService.call(params[:requested...])
-    # libray 이용, controller 사용 용도?
-
-    # json schemes -> instagram : www. 붙으면 X
-    # application/json-oembed HEADER
-
-    if url_params && check_url
-      first_url = check_url["endpoints"][0]["url"]
+    if url_params && get_oembed_url
+      first_url = get_oembed_url
       first_url.gsub! '{format}', 'json'
       full_url = first_url + '?url=' + url_params
-      full_url = full_url + "&format=json" unless full_url.include? "json"
-      json_result = Net::HTTP.get(URI.parse(full_url))
+      full_url = full_url + '&format=json' unless full_url.include? 'json'
+      json_result = open(full_url).read
       @results = JSON.parse(json_result)
     end
   end
@@ -25,34 +17,34 @@ class IntrosController < ApplicationController
   private
 
   def url_params
-    params[:url_address] # video_address 네이밍 변경 url_address
+    params[:url_address]
   end
 
   def url_host
     URI.parse(url_params).host
   end
 
-  def check_params # validated_request_url 따라가도록 하지말고 한 곳에서 입력해주도록? 
-    check_valid_url if url_params
+  def validated_request_url
+    get_providers_json if url_params
   end
 
-  def check_valid_url
-    return load_providers_json if url_host
-    redirect_to root_url, alert: "Invalid URL"
+  def get_providers_json
+    if url_params && url_host
+      oembed_providers = RestClient.get 'https://oembed.com/providers.json'
+      @providers_json = JSON.parse(oembed_providers)
+      return get_oembed_url
+    else
+      redirect_to root_url, alert: "Invalid URL"
+    end
   end
 
-  def check_url
-    @providers_json.find{ |provider| provider['provider_url'].include? url_host }
-  end
-
-  def load_providers_json
-    oembed_providers = RestClient.get 'https://oembed.com/providers.json'
-    @providers_json = JSON.parse(oembed_providers)
-    return request_oembed_url
-  end
-
-  def request_oembed_url
-    return if check_url
+  def get_oembed_url
+    @providers_json.each do |provider|
+      if provider['endpoints'][0]['schemes']
+        schemes = provider['endpoints'][0]['schemes'].map { |url| url.split('/')[2]&.gsub '*', 'www' }
+        return provider['endpoints'][0]['url'] if schemes.include? url_host
+      end
+    end
     redirect_to root_url, alert: "The url does not provide oEmbed." and return
   end
 end
